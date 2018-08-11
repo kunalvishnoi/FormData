@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import superagent from "superagent";
 import { Redirect } from "react-router-dom";
-import SecondForm from '../SecondForm';
+import SecondForm from "../SecondForm";
 import "../../App.css";
 
 class App extends Component {
@@ -28,8 +28,6 @@ class App extends Component {
       disabled: false,
       expand: false,
       export: "Export",
-      error2: "",
-      success2: "",
       nextform: []
     };
   }
@@ -120,43 +118,6 @@ class App extends Component {
     this.setState({
       reason1: event.target.value
     });
-  };
-  secondForm = event => {
-    event.preventDefault();
-    this.setState({
-      disabled: true,
-      export: "Exporting"
-    });
-    const payload = {
-      index1: this.state.index1,
-      clause1: this.state.clause1,
-      action1: this.state.action1,
-      keep1: this.state.keep1,
-      reason1: this.state.reason1,
-      index2: this.state.index2,
-      clause2: this.state.clause2,
-      action2: this.state.action2,
-      keep2: this.state.keep2,
-      reason2: this.state.reason2
-    };
-    superagent
-      .post("http://35.185.80.55:8081/export")
-      .set("Content-Type", "application/json")
-      .send(payload)
-      .then(res => {
-        window.open(res.body.link);
-        console.log(res);
-        this.setState({
-          success2: "Successfull",
-          disabled: false
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          error2: "Failed"
-        });
-      });
   };
   submitForm = event => {
     event.preventDefault();

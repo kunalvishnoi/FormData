@@ -20,14 +20,18 @@ class SecondForm extends Component {
   handleChange = event => {
     const elem = event.target;
     this.setState({
-      [elem.name]: event.value
+      [elem.name]: elem.value
     });
   };
   submitForm = event => {
     event.preventDefault();
-    const payload = {
-      kunal: "hi"
-    };
+    const payload = this.state;
+    Object.keys(payload).forEach(key => {
+      if (key.endsWith("index") || key.endsWith("keep")) {
+        payload[key] = parseInt(payload[key]);
+      }
+    });
+    console.log(payload);
     superagent
       .post("http://35.185.80.55:8081/export")
       .set("Content-Type", "application/json")
@@ -55,6 +59,9 @@ class SecondForm extends Component {
               name={indexName}
               value={this.state[indexName]}
               onChange={this.handleChange}
+              readOnly="readonly"
+              className="pl-2"
+              required
             />
           </div>
           <div className="col-md-2">
@@ -62,6 +69,9 @@ class SecondForm extends Component {
               name={clauseName}
               value={this.state[clauseName]}
               onChange={this.handleChange}
+              readOnly="readonly"
+              className="pl-2"
+              required
             />
           </div>
           <div className="col-md-2">
@@ -69,6 +79,8 @@ class SecondForm extends Component {
               name={action}
               value={this.state[action]}
               onChange={this.handleChange}
+              className="pl-2"
+              required
             />
           </div>
           <div className="col-md-2">
@@ -76,6 +88,8 @@ class SecondForm extends Component {
               name={reason}
               value={this.state[reason]}
               onChange={this.handleChange}
+              className="pl-2"
+              required
             />
           </div>
           <div className="col-md-2">
@@ -83,6 +97,8 @@ class SecondForm extends Component {
               name={keep}
               value={this.state[keep]}
               onChange={this.handleChange}
+              className="pl-2"
+              required
             />
           </div>
         </div>
@@ -120,7 +136,7 @@ class SecondForm extends Component {
           {this.props.formData.map(this.renderField)}
           <div className="text-center">
             <button className="btn btn-primary mt-4" type="submit">
-              Submit
+              Export
             </button>
           </div>
         </form>
