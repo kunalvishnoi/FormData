@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import superagent from 'superagent';
 import {NavLink} from 'react-router-dom';
-import {Card, Form, Button, Heading} from "../../Shared/styles.js"
+import {LogInCard, Form, Button, Heading} from "../../Shared/styles.js"
 
 class Login extends  Component {
   constructor() {
@@ -42,7 +42,7 @@ class Login extends  Component {
 
   render() {
     return (
-        <Card>
+        <LogInCard>
    
           <Form 
             className="p-3"
@@ -94,7 +94,7 @@ class Login extends  Component {
                 </linearGradient>
             </defs>
         </svg>                
-        </Card>
+        </LogInCard>
       );
   }
 }

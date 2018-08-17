@@ -6,10 +6,12 @@ background: #fff;
 max-width: 500px;
 padding: 2rem 0;
 margin: 0 auto;
-position: relative;
-top: 50%;
-transform: translateY(-50%)
 `;
+
+export const LogInCard = Card.extend `
+transform: translateY(10%)
+`;
+
 
 
 export const Form = styled.form `
@@ -17,6 +19,9 @@ max-width: 500px;
 margin: 0 2rem;
 background-color: #fff;
 padding-bottom: 3rem !important;
+@media (max-width: 576px) {
+    margin: 0 0.25rem;
+}
 `;
 
 export const Button = styled.button `
@@ -39,4 +44,21 @@ margin-bottom:2rem;
 margin-top:.25rem;
 letter-spacing: 5px;
 font-weight: 600;
+`
+export const H4 = styled.h4`
+font-family: 'Playfair Display', serif;
+text-align: center;
+text-transform: uppercase;
+letter-spacing: 2px;
+font-weight: 600;
+margin: 2rem;
+`
+
+
+export const Input = styled.input`
+border: 0;
+box-shadow: 1px 2px 10px 0 #e0e0e0;
+width: 80%;
+margin-bottom: 1.5rem;
+margin: auto;
 `

@@ -24,7 +24,7 @@ body {
 }
 
 label {
-  margin-bottom: 0;
+  margin-top: 1rem;
   font-weight: bold;
   font-size: 20px;
 }
@@ -92,6 +92,11 @@ label {
 
 input {
   height: 40px !important;
+}
+
+.logout {  
+  display: flex;
+  margin: 1rem 1rem 0 auto;
 }
 
 .input-group {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import superagent from 'superagent';
 
-import {Card, Form, Button, Heading} from "../../Shared/styles.js"
+import {LogInCard, Form, Button, Heading} from "../../Shared/styles.js"
 
 class Signup extends  Component {
   constructor() {
@@ -49,7 +49,7 @@ class Signup extends  Component {
 
   render() {
     return (
-        <Card>
+        <LogInCard>
           <Form 
             className="p-3"
             onSubmit={this.submitForm.bind(this)}
@@ -117,7 +117,7 @@ class Signup extends  Component {
                 </linearGradient>
             </defs>
         </svg>              
-        </Card>
+        </LogInCard>
       );
   }
 }

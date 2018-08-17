@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import "../../App.css";
+import {Card, Form, Heading, H4} from "../../Shared/styles.js"
 
 class SecondForm extends Component {
   constructor(props) {
@@ -107,9 +108,8 @@ class SecondForm extends Component {
   };
   render() {
     return (
-      <div className="wrapper">
-        <form
-          className="form-signin"
+      <Card>
+        <Form
           onSubmit={this.submitForm}
           style={{ maxWidth: "1000px" }}
         >
@@ -139,8 +139,8 @@ class SecondForm extends Component {
               Export
             </button>
           </div>
-        </form>
-      </div>
+        </Form>
+      </Card>
     );
   }
 }

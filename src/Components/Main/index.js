@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import SecondForm from "../SecondForm";
+
+import {Card, Form, Heading, H4} from "../../Shared/styles.js"
 import "../../App.css";
 
 class App extends Component {
@@ -177,7 +179,7 @@ class App extends Component {
     const isAlreadyAuthenticated = this.isAuthenticated();
     const isExpand = this.state.expand;
     return (
-      <div className="App">
+      <div>
         {!isAlreadyAuthenticated ? (
           <Redirect
             to={{
@@ -188,25 +190,17 @@ class App extends Component {
           <div>
             {!isExpand ? (
               <div>
-                <div
-                  style={{ position: "absolute", left: "10px", top: "10px" }}
-                >
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-danger logout"
                     onClick={this.handleLogout.bind(this)}
                   >
                     Logout
                   </button>
-                </div>
-                <h1
-                  className="text-center"
-                  style={{ marginTop: "50px", color: "white" }}
-                >
-                  Details Upload
-                </h1>
-                <div className="wrapper">
-                  <form className="form-signin" onSubmit={this.submitForm}>
-                    <h2 className="form-signin-heading text-center">Form</h2>
+
+                <Card className="my-4">
+                  <Form onSubmit={this.submitForm}>
+                    <Heading>Details Upload</Heading>
+                    <H4>Form</H4>
                     <label>Jurisdiction</label>
                     <select
                       className="form-control"
@@ -229,9 +223,7 @@ class App extends Component {
                       <option>Tenant</option>
                       <option>Landlord</option>
                     </select>
-                    <h3 className="text-center" style={{ marginTop: "10px" }}>
-                      Grammar
-                    </h3>
+                    <H4>Grammar</H4>
                     <label>Clause Name(s)</label>
                     <input
                       type="text"
@@ -260,9 +252,7 @@ class App extends Component {
                       value={this.state.grammaraction}
                       onChange={this.handleGrammaraction}
                     />
-                    <h3 className="text-center" style={{ marginTop: "10px" }}>
-                      Clauses
-                    </h3>
+                    <H4>Clauses</H4>
                     <label>Clause Name(s)</label>
                     <input
                       type="text"
@@ -297,11 +287,10 @@ class App extends Component {
                     <label>Action</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control mb-4"
                       value={this.state.clauseaction}
                       onChange={this.handleClauseaction}
                     />
-                    <br />
                     <span className="btn btn-success btn-file float-left">
                       Upload Document
                       <input
@@ -311,8 +300,6 @@ class App extends Component {
                         id="upload"
                       />
                     </span>
-                    <br />
-                    <br />
                     <button
                       disabled={this.state.disabled}
                       className="btn btn-primary float-right"
@@ -320,14 +307,14 @@ class App extends Component {
                     >
                       {this.state.upload}
                     </button>
-                  </form>
+                  </Form>
                   <p className="text-center" style={{ color: "green" }}>
                     {this.state.success}
                   </p>
                   <p className="text-center" style={{ color: "red" }}>
                     {this.state.failed}
                   </p>
-                </div>
+                </Card>
               </div>
             ) : (
               <SecondForm formData={this.state.nextform} />
