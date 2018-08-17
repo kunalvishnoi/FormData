@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import superagent from 'superagent';
+
+import {Card, Form, Button, Heading} from "../../Shared/styles.js"
+
 class Signup extends  Component {
   constructor() {
     super();
@@ -46,46 +49,75 @@ class Signup extends  Component {
 
   render() {
     return (
-      <div>
-        <div className="wrapper" style={{marginTop: '100px'}}>
-          <form 
-            className="form-signin"
+        <Card>
+          <Form 
+            className="p-3"
             onSubmit={this.submitForm.bind(this)}
             >       
-            <h2 className="form-signin-heading text-center">Signup</h2>
-            <input type="text" name="name"
+            <Heading>Sign up</Heading>
+            <div className="input-group mb-4">
+  <div className="input-group-prepend">
+    <span className="input-group-text" id="basic-addon1"><i className="material-icons">person</i></span>
+  </div>
+  <input type="text" name="name"
               className="form-control"
               value={this.state.name}
               onChange={this.handlenameChanged.bind(this)}
-              placeholder="name"
+              placeholder="Name"
               />
-              <br/>
+
+
+</div>            
+
+            <div className="input-group mb-4">
+  <div className="input-group-prepend">
+    <span className="input-group-text" id="basic-addon1"><i className="material-icons">email</i></span>
+  </div>
               <input type="email"
               className="form-control"
               value={this.state.email}
               onChange={this.handleemailChanged.bind(this)}
-              placeholder="email"
+              placeholder="Email"
               />
-              <br/>
+              </div>       
+            <div className="input-group mb-4">
+  <div className="input-group-prepend">
+    <span className="input-group-text" id="basic-addon1"><i className="material-icons">smartphone</i></span>
+  </div>
             <input type="tel"
               className="form-control"
               value={this.state.phone}
               onChange={this.handlephoneChanged.bind(this)}
-              placeholder="phone"
+              placeholder="Phone"
               />
-              <br/>
+              </div>       
+            <div className="input-group mb-4">
+  <div className="input-group-prepend">
+    <span className="input-group-text" id="basic-addon1"><i className="material-icons">explore</i></span>
+  </div>
             <input type="password" 
               className="form-control" 
               value={this.state.password} 
               name="password"
               placeholder="Password"
               onChange={this.handlePasswordChanged.bind(this)}
-              />      
-              <br/>
-            <button className="btn btn-lg btn-primary" type="submit">Signup</button>   
-          </form>
-        </div>
-      </div>
+              />     
+              </div>     
+            <Button className="btn btn-lg btn-primary" type="submit">Sign Up</Button>   
+          </Form>
+          <svg className="rocks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon className="svg--sm" fill="red" points="0,0 30,100 65,21 90,100 100,75 100,100 0,100"/>
+            <polygon className="svg--lg" fill="red" points="0,0 15,100 33,21 45,100 50,75 55,100 72,20 85,100 95,50 100,80 100,100 0,100" />
+          </svg>    
+          <svg className="gradient">
+            <defs>
+                <linearGradient id="grad">
+                  <stop offset="0" stopColor="#CE9FFC"/>
+                  <stop offset="1" stopColor="#7367F0"/>
+                </linearGradient>
+            </defs>
+        </svg>              
+        </Card>
       );
   }
 }
