@@ -108,15 +108,15 @@ class SecondForm extends Component {
   };
   render() {
     return (
-      <Card>
+      <Card className="my-4" style={{ maxWidth: "1000px" }}>
         <Form
-          onSubmit={this.submitForm}
-          style={{ maxWidth: "1000px" }}
+          style={{ maxWidth: "100%" }}
+          onSubmit={this.submitForm}          
         >
-          <h2>Form</h2>
+          <Heading>Form</Heading>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-2 offset-md-1">
                 <label>Index</label>
               </div>
               <div className="col-md-2">
