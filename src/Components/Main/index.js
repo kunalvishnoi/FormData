@@ -3,7 +3,7 @@ import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import SecondForm from "../SecondForm";
 
-import { Card, Form, Heading, H4 } from "../../Shared/styles.js";
+import { Card, Form, H3, H4 } from "../../Shared/styles.js";
 import "../../App.css";
 
 class App extends Component {
@@ -196,8 +196,8 @@ class App extends Component {
             </button>
             {!isExpand ? (
               <Card className="my-4">
-                <Form onSubmit={this.submitForm}>
-                  <Heading>Details Upload</Heading>
+                <Form onSubmit={this.submitForm} className="pt-4">
+                  <H3 >Details Upload</H3>
                   <H4>Form</H4>
                   <label>Jurisdiction</label>
                   <select

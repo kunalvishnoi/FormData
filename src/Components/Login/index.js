@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import superagent from 'superagent';
-import {NavLink} from 'react-router-dom';
-import {LogInCard, Form, Button, Heading} from "../../Shared/styles.js"
+import { NavLink } from 'react-router-dom';
+import { LogInCard, Form, Button, H3, H4, styledH3 } from "../../Shared/styles.js"
 
 class Login extends  Component {
   constructor() {
@@ -42,13 +42,14 @@ class Login extends  Component {
 
   render() {
     return (
+      <div>
+      <H4 className="text-white">Construct a Leasing Negotiation Table in less than 30 Seconds.</H4>
         <LogInCard>
-   
           <Form 
             className="p-3"
             onSubmit={this.submitForm.bind(this)}
             >       
-            <Heading>Sign In</Heading>
+            <H3>Sign In</H3>
             <div className="input-group mb-4">
         <div className="input-group-prepend">
           <div className="input-group-text"><i className="material-icons">smartphone</i></div>
@@ -89,12 +90,27 @@ class Login extends  Component {
           <svg className="gradient">
             <defs>
                 <linearGradient id="grad">
-                  <stop offset="0" stopColor="#CE9FFC"/>
-                  <stop offset="1" stopColor="#7367F0"/>
+                  <stop offset="0" stopColor="#97ABFF"/>
+                  <stop offset="1" stopColor="#123597"/>
                 </linearGradient>
             </defs>
         </svg>                
         </LogInCard>
+        <div className="row p-0 text-center text-white data-row">
+          <div className="col-md-4">
+          <img src="/assets/icon3.png" />
+          <h5 class="my-4">Our Machine Learning Analysis, Your Leasing Contracts</h5>
+          </div>
+          <div className="col-md-4">
+          <img src="/assets/icon2.png" />
+          <h5 class="my-4">Review takes less than a minute</h5>
+          </div>
+          <div className="col-md-4">
+          <img src="/assets/icon1.png" />
+          <h5 class="my-4">Download a negotiation table</h5>
+          </div>
+        </div>
+        </div>
       );
   }
 }

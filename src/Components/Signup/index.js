@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import superagent from 'superagent';
 
-import {LogInCard, Form, Button, Heading} from "../../Shared/styles.js"
+import {LogInCard, Form, Button, H3, H4} from "../../Shared/styles.js"
 
 class Signup extends  Component {
   constructor() {
@@ -49,12 +49,14 @@ class Signup extends  Component {
 
   render() {
     return (
+      <div>
+      <H4 className="text-white">Construct a Leasing Negotiation Table in less than 30 Seconds.</H4>
         <LogInCard>
           <Form 
             className="p-3"
             onSubmit={this.submitForm.bind(this)}
             >       
-            <Heading>Sign up</Heading>
+            <H3>Sign up</H3>
             <div className="input-group mb-4">
   <div className="input-group-prepend">
     <span className="input-group-text" id="basic-addon1"><i className="material-icons">person</i></span>
@@ -112,12 +114,27 @@ class Signup extends  Component {
           <svg className="gradient">
             <defs>
                 <linearGradient id="grad">
-                  <stop offset="0" stopColor="#CE9FFC"/>
-                  <stop offset="1" stopColor="#7367F0"/>
+                  <stop offset="0" stopColor="#97ABFF"/>
+                  <stop offset="1" stopColor="#123597"/>
                 </linearGradient>
             </defs>
         </svg>              
         </LogInCard>
+        <div className="row p-0 text-center text-white data-row">
+          <div className="col-md-4">
+          <img src="/assets/icon3.png" />
+          <h5 class="my-4">Our Machine Learning Analysis, Your Leasing Contracts</h5>
+          </div>
+          <div className="col-md-4">
+          <img src="/assets/icon2.png" />
+          <h5 class="my-4">Review takes less than a minute</h5>
+          </div>
+          <div className="col-md-4">
+          <img src="/assets/icon1.png" />
+          <h5 class="my-4">Download a negotiation table</h5>
+          </div>
+        </div>
+        </div>
       );
   }
 }

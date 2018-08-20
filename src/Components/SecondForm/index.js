@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import "../../App.css";
-import {Card, Form, Heading, H4} from "../../Shared/styles.js"
+import {Card, Form, H3, H4} from "../../Shared/styles.js"
 
 class SecondForm extends Component {
   constructor(props) {
@@ -113,7 +113,7 @@ class SecondForm extends Component {
           style={{ maxWidth: "100%" }}
           onSubmit={this.submitForm}          
         >
-          <Heading>Form</Heading>
+          <H3>Form</H3>
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-2 offset-md-1">
