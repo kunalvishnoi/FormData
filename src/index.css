@@ -1,7 +1,7 @@
 html,
 body,
 #root {
-  height:auto;
+  height: auto;
   min-height: 100%
 }
 
@@ -24,10 +24,11 @@ body {
 a {
   color: #123597;
 }
+
 .data-row {
   margin: 0;
   margin: auto;
-  margin-top: 2.5rem;
+  margin-top: 4rem;
 }
 
 @media (min-width: 768px) {

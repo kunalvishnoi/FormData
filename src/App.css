@@ -94,7 +94,7 @@ input {
   height: 40px !important;
 }
 
-.logout {  
+.logout {
   display: flex;
   margin: 1rem 1rem 0 auto;
 }

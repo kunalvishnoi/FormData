@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import "../../App.css";
-import {Card, Form, H3, H4} from "../../Shared/styles.js"
+import {Card, Form, H3, H4} from "../../Shared/styles"
 
 class SecondForm extends Component {
   constructor(props) {
