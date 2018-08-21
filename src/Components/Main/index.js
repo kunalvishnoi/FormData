@@ -142,7 +142,7 @@ class App extends Component {
     form.append("selectedFile", this.state.selectedFile);
 
     superagent
-      .post("http://35.185.80.55:8081/submit")
+      .post("http://35.196.112.28:8081/submit")
       .send(form)
       .then(res => {
         console.log(res);
