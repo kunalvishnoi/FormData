@@ -2,17 +2,24 @@ import React, { Component } from "react";
 import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import "../../App.css";
+import {Card, Form, H3, H4} from "../../Shared/styles"
 
 class SecondForm extends Component {
   constructor(props) {
     super(props);
-    const state = {};
+    const data = this.props.FormData;
+
+    const state = {
+    data:data,
+    };
     props.formData.forEach((data, i) => {
       state[`${i}-index`] = data.index;
       state[`${i}-clause_no`] = data.clause_no;
       state[`${i}-action`] = data.action;
       state[`${i}-keep`] = data.keep;
-      state[`${i}-reason`] = "";
+      state[`${i}-reason`] = data.reason;
+      state[`${i}-data`] = data.data;
+        
     });
     this.state = state;
   }
@@ -33,7 +40,7 @@ class SecondForm extends Component {
     });
     console.log(payload);
     superagent
-      .post("http://35.185.80.55:8081/export")
+      .post("http://35.196.112.28:8081/export")
       .set("Content-Type", "application/json")
       .send(payload)
       .then(res => {
@@ -107,16 +114,15 @@ class SecondForm extends Component {
   };
   render() {
     return (
-      <div className="wrapper">
-        <form
-          className="form-signin"
-          onSubmit={this.submitForm}
-          style={{ maxWidth: "1000px" }}
+      <Card className="my-4" style={{ maxWidth: "1000px" }}>
+        <Form
+          style={{ maxWidth: "100%" }}
+          onSubmit={this.submitForm}          
         >
-          <h2>Form</h2>
+          <H3>Form</H3>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-2 offset-md-1">
                 <label>Index</label>
               </div>
               <div className="col-md-2">
@@ -139,8 +145,8 @@ class SecondForm extends Component {
               Export
             </button>
           </div>
-        </form>
-      </div>
+        </Form>
+      </Card>
     );
   }
 }

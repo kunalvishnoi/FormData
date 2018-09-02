@@ -5,9 +5,7 @@ import LoginForm from './Components/LoginForm';
 class App extends Component {
 render() {
   return (
-    <div className="App">
-      <LoginForm/>
-    </div>
+      <LoginForm />
     );
   }
 }

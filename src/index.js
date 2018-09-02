@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const Root = () =>
 <Router>
-  <div>
+  <div id="app">
     <Route exact path="/" component={App} />
     <Route exact path="/signup" component={ SignupForm } />
     <Route exact path="/Main" component= { Main } />
