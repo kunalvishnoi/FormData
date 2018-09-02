@@ -7,13 +7,19 @@ import {Card, Form, H3, H4} from "../../Shared/styles"
 class SecondForm extends Component {
   constructor(props) {
     super(props);
-    const state = {};
+    const data = this.props.FormData;
+
+    const state = {
+    data:data,
+    };
     props.formData.forEach((data, i) => {
       state[`${i}-index`] = data.index;
       state[`${i}-clause_no`] = data.clause_no;
       state[`${i}-action`] = data.action;
       state[`${i}-keep`] = data.keep;
-      state[`${i}-reason`] = "";
+      state[`${i}-reason`] = data.reason;
+      state[`${i}-data`] = data.data;
+        
     });
     this.state = state;
   }

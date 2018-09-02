@@ -19,7 +19,7 @@ class Signupform extends  Component {
     return (
       <div>
       { isAlreadyAuthenticated ? <Redirect to={{
-        pathname: '/main'
+        pathname: '/'
       }}/> : (
       <Signup onSuccessfulSignup={this.handleSuccessfulSignup.bind(this)}/>
       )
