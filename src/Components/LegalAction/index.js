@@ -55,7 +55,7 @@ class SecondForm extends Component {
             <h3 className="text-center">{this.state[name]}</h3>
           </div>
          
-          <div className="col-md-4">
+          <div className="col-md-4 text-center">
             <input
               name={action}
               value={this.state[action]}
@@ -64,7 +64,7 @@ class SecondForm extends Component {
               required
             />
           </div>
-           <div className="col-md-4">
+           <div className="col-md-4 text-center">
             <input
               name={reason}
               value={this.state[reason]}

@@ -144,6 +144,8 @@ class App extends Component {
     form.append("clausereason", this.state.clausereason);
     form.append("clauseaction", this.state.clauseaction);
     form.append("selectedFile", this.state.selectedFile);
+    form.append("email", localStorage.getItem("email"));
+
 
     superagent
       .post("http://35.196.112.28:8081/submit")
@@ -179,7 +181,7 @@ class App extends Component {
   }
   eventHandler = () => {
     const payload = {
-      username: localStorage.getItem("username")
+      email: localStorage.getItem("email")
     }
     console.log(payload);
     superagent

@@ -39,7 +39,7 @@ class Login extends Component {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.headers["x-auth"]);
-        localStorage.setItem("username" , res.body.name);
+        localStorage.setItem("email" , res.body.email);
         this.props.onSuccessfulLogin();
       })
       .catch(err => {
