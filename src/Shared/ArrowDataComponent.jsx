@@ -7,7 +7,7 @@ class ArrowData extends Component {
       return (
         <div className="text-white text-center my-5 mt-md-3">
           <h5>less than 60 seconds</h5>
-          <h5 style={{ "padding-left": "4rem" }} className="mb-4">
+          <h5 style={{ "paddingLeft": "4rem" }} className="mb-4">
             <span>Leasing Documents </span>
             <img src="/assets/arrow.svg" className="mx-4" />
             <span> Negotiation Table in docx.</span>

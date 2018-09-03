@@ -7,10 +7,7 @@ import {Card, Form, H3, H4} from "../../Shared/styles"
 class SecondForm extends Component {
   constructor(props) {
     super(props);
-    const data = this.props.FormData;
-
     const state = {
-    data:data,
     };
     props.formData.forEach((data, i) => {
       state[`${i}-index`] = data.index;
@@ -20,6 +17,14 @@ class SecondForm extends Component {
       state[`${i}-reason`] = data.reason;
       state[`${i}-data`] = data.data;
         
+    });
+    props.updata.forEach((data, i) => {
+      state[`${i}-up-index`] = data.index;
+      state[`${i}-up-clause_no`] = data.clause_no;
+      state[`${i}-up-action`] = data.action;
+      state[`${i}-up-keep`] = data.keep;
+      state[`${i}-up-reason`] = data.reason;
+      state[`${i}-up-data`] = data.data;
     });
     this.state = state;
   }
@@ -112,6 +117,74 @@ class SecondForm extends Component {
       </div>
     );
   };
+
+
+  renderField2 = (fieldData, i) => {
+    const upindexName = `${i}-up-index`;
+    const upclauseName = `${i}-up-clause_no`;
+    const upaction = `${i}-up-action`;
+    const upreason = `${i}-up-reason`;
+    const upkeep = `${i}-up-keep`;
+
+    return (
+      <div className="container-fluid" key={i}>
+        <div className="row pt-2">
+          <div className="col-md-2">
+            <input
+              name={upindexName}
+              value={this.state[upindexName]}
+              onChange={this.handleChange}
+              readOnly="readonly"
+              className="pl-2"
+              required
+            />
+          </div>
+          <div className="col-md-2">
+            <input
+              name={upclauseName}
+              value={this.state[upclauseName]}
+              onChange={this.handleChange}
+              readOnly="readonly"
+              className="pl-2"
+              required
+            />
+          </div>
+          <div className="col-md-2">
+            <input
+              name={upaction}
+              value={this.state[upaction]}
+              onChange={this.handleChange}
+              className="pl-2"
+              required
+            />
+          </div>
+          <div className="col-md-2">
+            <input
+              name={upreason}
+              value={this.state[upreason]}
+              onChange={this.handleChange}
+              className="pl-2"
+              required
+            />
+          </div>
+          <div className="col-md-2">
+            <input
+              name={upkeep}
+              value={this.state[upkeep]}
+              onChange={this.handleChange}
+              className="pl-2"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+
+
+
+
   render() {
     return (
       <Card className="my-4" style={{ maxWidth: "1000px" }}>
@@ -119,27 +192,51 @@ class SecondForm extends Component {
           style={{ maxWidth: "100%" }}
           onSubmit={this.submitForm}          
         >
-          <H3>Form</H3>
+          <H3 className="pt-3">Form</H3>
+          <h3 className="text-center">Classified Clauses</h3>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-2 offset-md-1">
+              <div className="col-md-2 text-center">
                 <label>Index</label>
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 text-center">
                 <label>Clause_No</label>
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 text-center">
                 <label>Action</label>
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 text-center">
                 <label>Reason</label>
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 text-center">
                 <label>Keep</label>
               </div>
             </div>
           </div>
           {this.props.formData.map(this.renderField)}
+          <br/>
+          <br/>
+          <h3 className="text-center">Unclassified Clauses</h3>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-2 text-center">
+                <label>Index</label>
+              </div>
+              <div className="col-md-2 text-center">
+                <label>Clause_No</label>
+              </div>
+              <div className="col-md-2 text-center">
+                <label>Action</label>
+              </div>
+              <div className="col-md-2 text-center">
+                <label>Reason</label>
+              </div>
+              <div className="col-md-2 text-center">
+                <label>Keep</label>
+              </div>
+            </div>
+          </div>
+          {this.props.updata.map(this.renderField2)}
           <div className="text-center">
             <button className="btn btn-primary mt-4" type="submit">
               Export

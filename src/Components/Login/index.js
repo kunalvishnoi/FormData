@@ -39,6 +39,7 @@ class Login extends Component {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.headers["x-auth"]);
+        localStorage.setItem("username" , res.body.name);
         this.props.onSuccessfulLogin();
       })
       .catch(err => {
@@ -129,17 +130,17 @@ class Login extends Component {
         <div className="row p-0 text-center text-white data-row">
           <div className="col-sm-4">
             <img src="/assets/document.svg" />
-            <h5 class="my-4">
+            <h5 className="my-4">
               Our Machine Learning Analysis, Your Leasing Contracts
             </h5>
           </div>
           <div className="col-sm-4">
             <img src="/assets/clock.svg" />
-            <h5 class="my-4">Review takes less than a minute</h5>
+            <h5 className="my-4">Review takes less than a minute</h5>
           </div>
           <div className="col-sm-4">
             <img src="/assets/cloud.svg" />
-            <h5 class="my-4">Download a negotiation table</h5>
+            <h5 className="my-4">Download a negotiation table</h5>
           </div>
         </div>
         <ArrowData />

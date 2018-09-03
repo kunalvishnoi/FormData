@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import SecondForm from "../SecondForm";
+import LegalAction from "../LegalAction";
 
 import { Card, Form, H3, H4 } from "../../Shared/styles";
 import "../../App.css";
@@ -30,7 +31,10 @@ class App extends Component {
       disabled: false,
       expand: false,
       export: "Export",
-      nextform: []
+      nextform: [],
+      upform: [],
+      legal: true,
+      legalData: []
     };
   }
   handleJuridisction = event => {
@@ -147,11 +151,13 @@ class App extends Component {
       .then(res => {
         console.log(res);
         const next = res.body.link;
+        const up =res.body.ulink;
         this.setState({
           nextform: next,
           expand: true,
           disabled: false,
-          upload: "Saved"
+          upload: "Saved",
+          upform: up
         });
       })
       .catch(err => {
@@ -171,6 +177,32 @@ class App extends Component {
       logout: "yes"
     });
   }
+  eventHandler = () => {
+    const payload = {
+      username: localStorage.getItem("username")
+    }
+    console.log(payload);
+    superagent
+      .post("http://35.196.112.28:8081/legal")
+      .send(payload)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          legalData: res.body.link,
+          legal:false
+        })
+        console.log(this.state.legalData)
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
+
+  }
+  handleSuccess = () => {
+    this.setState({
+      legal: true
+    })
+  }
   isAuthenticated() {
     const token = localStorage.getItem("token");
     return token && token.length > 10;
@@ -178,6 +210,7 @@ class App extends Component {
   render() {
     const isAlreadyAuthenticated = this.isAuthenticated();
     const isExpand = this.state.expand;
+    const isLegal = this.state.legal;
     return (
       <div>
         {!isAlreadyAuthenticated ? (
@@ -188,12 +221,19 @@ class App extends Component {
           />
         ) : (
           <div>
+          <button className="btn btn-primary logout"
+            onClick={this.eventHandler}
+            >
+            Legal Position
+            </button>
             <button
               className="btn btn-danger logout"
               onClick={this.handleLogout.bind(this)}
             >
               Logout
             </button>
+            {isLegal ? (
+              <div>
             {!isExpand ? (
               <Card className="my-4">
                 <Form onSubmit={this.submitForm} className="pt-4">
@@ -314,8 +354,12 @@ class App extends Component {
                 </p>
               </Card>
             ) : (
-              <SecondForm formData={this.state.nextform} />
+              <SecondForm formData={this.state.nextform} updata={this.state.upform} />
             )}
+            </div>
+            ) : (
+            <LegalAction formValue={this.state.legalData} onSuccessfull={this.handleSuccess}/>
+            ) }
           </div>
         )}
       </div>
