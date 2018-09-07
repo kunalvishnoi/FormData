@@ -8,6 +8,7 @@ class SecondForm extends Component {
   constructor(props) {
     super(props);
     const state = {
+      email: localStorage.getItem("email"),
     };
     props.formData.forEach((data, i) => {
       state[`${i}-index`] = data.index;
