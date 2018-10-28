@@ -146,7 +146,7 @@ class App extends Component {
     form.append("selectedFile", this.state.selectedFile);
     form.append("email", localStorage.getItem("email"));
 
-
+    console.log(form);
     superagent
       .post("http://35.196.112.28:8081/submit")
       .send(form)
