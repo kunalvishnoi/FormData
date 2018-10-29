@@ -3,6 +3,8 @@ import superagent from "superagent";
 import { Redirect } from "react-router-dom";
 import SecondForm from "../SecondForm";
 import LegalAction from "../LegalAction";
+import Create from "../Create";
+
 
 import { Card, Form, H3, H4 } from "../../Shared/styles";
 import "../../App.css";
@@ -34,7 +36,8 @@ class App extends Component {
       nextform: [],
       upform: [],
       legal: true,
-      legalData: []
+      legalData: [],
+      option: true
     };
   }
   handleJuridisction = event => {
@@ -148,7 +151,7 @@ class App extends Component {
 
     console.log(form);
     superagent
-      .post("http://35.196.112.28:8081/submit")
+      .post("http://104.196.119.240:8081/submit")
       .send(form)
       .then(res => {
         console.log(res);
@@ -179,13 +182,18 @@ class App extends Component {
       logout: "yes"
     });
   }
+  eventHandlercreate = () => {
+    this.setState({
+      option: false
+    })
+  }
   eventHandler = () => {
     const payload = {
       email: localStorage.getItem("email")
     }
     console.log(payload);
     superagent
-      .post("http://35.196.112.28:8081/legal")
+      .post("http://104.196.119.240:8081/legal")
       .send(payload)
       .then(res => {
         console.log(res);
@@ -213,6 +221,7 @@ class App extends Component {
     const isAlreadyAuthenticated = this.isAuthenticated();
     const isExpand = this.state.expand;
     const isLegal = this.state.legal;
+    const isOption = this.state.option;
     return (
       <div>
         {!isAlreadyAuthenticated ? (
@@ -223,17 +232,28 @@ class App extends Component {
           />
         ) : (
           <div>
-          <button className="btn btn-primary logout"
-            onClick={this.eventHandler}
-            >
-            Legal Position
-            </button>
-            <button
+          <button
               className="btn btn-danger logout"
               onClick={this.handleLogout.bind(this)}
+               style={{display: 'inline-block' , float: 'right'}}
             >
               Logout
             </button>
+          <button className="btn btn-primary logout"
+            onClick={this.eventHandler}
+            style={{display: 'inline-block' , float: 'right'}}
+            >
+            Legal Position
+            </button>
+          <button className="btn btn-primary logout"
+            onClick={this.eventHandlercreate} 
+            style={{display: 'inline-block' , float: 'right'}}
+            >
+            Create Own
+            </button>
+
+            {isOption ? (
+              <div>
             {isLegal ? (
               <div>
             {!isExpand ? (
@@ -362,8 +382,13 @@ class App extends Component {
             ) : (
             <LegalAction formValue={this.state.legalData} onSuccessfull={this.handleSuccess}/>
             ) }
+            </div>
+            ) : (
+            <Create />
+            )}
           </div>
         )}
+
       </div>
     );
   }

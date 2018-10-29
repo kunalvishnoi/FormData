@@ -46,7 +46,7 @@ class SecondForm extends Component {
     });
     console.log(payload);
     superagent
-      .post("http://35.196.112.28:8081/export")
+      .post("http://104.196.119.240:8081/export")
       .set("Content-Type", "application/json")
       .send(payload)
       .then(res => {
